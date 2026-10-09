@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101311">
+  <meta name="description" content="Mohammad Elsayed — AI & Machine Learning Engineer in Cairo. Explore LangGraph agents, agentic RAG, n8n automation, FastAPI systems, and evaluated machine learning projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohammad Elsayed | AI Agents & Automation">
+  <meta property="og:description" content="Intelligence. Put to work. AI agents, retrieval systems, and automation, backed by project evidence.">
+  <meta property="og:image" content="/assets/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <title>Mohammad Elsayed — AI Engineer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/rubik-regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-bold.woff" as="font" type="font/woff" crossorigin>
+  <style>
+    @font-face{font-family:Rubik;src:url('assets/fonts/rubik-regular.woff') format('woff');font-weight:400;font-display:swap}
+    @font-face{font-family:Rubik;src:url('assets/fonts/rubik-bold.woff') format('woff');font-weight:700;font-display:swap}
+    @font-face{font-family:SourceMono;src:url('assets/fonts/source-code-pro.woff') format('woff');font-weight:400;font-display:swap}
+    :root{--bg:#101311;--panel:#181c19;--surface:#202620;--text:#f2f4ed;--muted:#a6b0a4;--lime:#cbef7b;--line:#333b32;--paper:#eeefe8;--ink:#1b241c;--purple:#b5a8eb;--mono:SourceMono,monospace;--sans:Rubik,Arial,sans-serif;--max:1280px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:105px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--lime);color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit;cursor:pointer}
+    button, a, summary{-webkit-tap-highlight-color:transparent}
+    button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--lime);outline-offset:5px}
+    h1,h2,h3,h4,p{margin:0}
+    h1,h2,h3,h4{font-weight:400;line-height:1.12;letter-spacing:-.055em}
+    svg{display:block;flex-shrink:0}
+    .icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+    .wrap{width:min(var(--max),calc(100% - 112px));margin-inline:auto}
+    .skip{position:fixed;top:8px;left:8px;z-index:100;padding:12px 20px;background:var(--lime);color:var(--ink);transform:translateY(-160%)}
+    .skip:focus{transform:translateY(0)}
+    .eyebrow{display:flex;align-items:center;gap:12px;font:13px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+    .eyebrow .dash{height:1px;width:24px;background:currentColor}
+    .muted{color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:30px;padding:5px 11px;font:12px/1.3 var(--mono);letter-spacing:.03em}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:23px}
+    .tag{font:12px/1.4 var(--mono);padding:5px 9px;border:1px solid var(--line);border-radius:4px;color:#bcc5b8}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:50px;border-radius:5px;padding:12px 21px;font-size:14px;border:1px solid transparent;transition:background .2s,transform .2s;white-space:nowrap}
+    .button:hover{transform:translateY(-2px)}
+    .button.primary{background:var(--lime);color:var(--ink)}
+    .button.primary:hover{background:#defca3}
+    .button.secondary{border-color:#495045;background:transparent}
+    .button.secondary:hover{background:var(--surface)}
+    .text-link{display:inline-flex;align-items:center;gap:9px;font-size:13px;line-height:1.5;padding:5px 0;border-bottom:1px solid #657653;transition:color .2s}
+    .text-link:hover{color:var(--lime)}
+    .section{padding:110px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:48px}
+    .section-head h2{font-size:clamp(36px,4.5vw,58px);margin-top:22px}
+    .section-head>p{max-width:330px;font-size:15px;color:var(--muted)}
+    .topbar{height:92px;position:sticky;top:0;z-index:30;background:rgba(16,19,17,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+    .nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:190px}
+    .mark{width:40px;height:40px;display:grid;place-items:center;border:1px solid #657350;color:var(--lime);font:700 16px var(--sans);letter-spacing:-1px;border-radius:50%}
+    .brand-name{font-size:13px;line-height:1.5;letter-spacing:-.02em}
+    .brand-name span{display:block;font:11px var(--mono);color:var(--muted);letter-spacing:.03em}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:0}
+    .nav-links a{font-size:13px;color:#bec5b9;transition:color .2s}
+    .nav-links a:hover,.nav-links a[aria-current="location"]{color:var(--lime)}
+    .nav-contact{font-size:13px;display:flex;align-items:center;gap:12px}
+    .nav-contact .icon{width:17px}
+    .menu-toggle{display:none;background:none;border:1px solid var(--line);padding:9px;border-radius:4px}
+    .hero{padding:83px 0 54px;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;right:-180px;top:0;width:650px;height:650px;background:radial-gradient(circle,rgba(114,145,69,.11),transparent 68%);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.16fr 1fr;gap:64px;align-items:center;position:relative}
+    .hero .eyebrow{color:var(--lime);font-size:12px}
+    .hero h1{font-size:clamp(65px,7.5vw,104px);margin:25px 0 29px;line-height:1.015;letter-spacing:-.065em}
+    .hero h1 span{display:block;color:var(--lime)}
+    .hero-copy{max-width:493px;color:var(--muted);font-size:17px;line-height:1.8}
+    .hero-copy strong{color:var(--text);font-weight:400}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:33px}
+    .hero-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:35px;font:12px var(--mono);color:#bec5b6}
+    .hero-meta span{display:flex;align-items:center;gap:8px}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);display:inline-block}
+    .system{border:1px solid #414b3c;border-radius:11px;background:linear-gradient(145deg,#1c221b,#141916);box-shadow:0 25px 80px #0003;overflow:hidden;transform:rotate(1deg)}
+    .system-top{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font:11px var(--mono);letter-spacing:.045em;color:var(--muted)}
+    .system-top span:last-child{color:var(--lime);display:flex;gap:8px;align-items:center}
+    .system-tabs{display:flex;gap:5px;padding:16px 19px 0}
+    .system-tabs button{font:11px var(--mono);text-transform:uppercase;letter-spacing:.05em;border:1px solid transparent;background:transparent;color:var(--muted);padding:8px 12px;border-radius:4px;flex:1}
+    .system-tabs button[aria-selected="true"]{border-color:#50653b;background:#cbed7912;color:var(--lime)}
+    .system-tabs button:hover{color:var(--text)}
+    .architecture{height:352px;position:relative;margin:8px 18px 0}
+    .architecture .wires{position:absolute;width:100%;height:100%;inset:0;stroke:#4a5840;stroke-width:1.2;fill:none}
+    .architecture .wires .flow{stroke:var(--lime);stroke-dasharray:3 150;animation:flow 9s linear infinite}
+    @keyframes flow{to{stroke-dashoffset:-480}}
+    .node{position:absolute;display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid #46503c;background:#20271e;border-radius:5px;width:43%;min-height:64px}
+    .node .node-symbol{height:28px;width:28px;display:grid;place-items:center;border-radius:4px;background:#cbed790d;color:var(--lime);flex-shrink:0}
+    .node .icon{width:17px;height:17px}
+    .node strong{display:block;font-size:12px;line-height:1.5;font-weight:400;letter-spacing:-.02em}
+    .node small{display:block;font:10px/1.5 var(--mono);color:var(--muted)}
+    .node-a{left:2%;top:23px}.node-b{right:2%;top:23px}.node-c{left:2%;bottom:31px}.node-d{right:2%;bottom:31px}
+    .core{position:absolute;top:128px;left:50%;transform:translateX(-50%);text-align:center;background:#182018;border:1px solid #879c67;width:177px;height:86px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 8px #cbef7b05,0 0 0 18px #cbef7b03;color:var(--lime)}
+    .core strong{font-size:17px;letter-spacing:-.04em;font-weight:400}
+    .core small{font:10px var(--mono);color:#b1bda0;margin-top:5px}
+    .core .core-spark{position:absolute;top:-10px;right:-9px;width:23px;height:23px;border-radius:50%;background:var(--lime);color:#1b241c;display:grid;place-items:center;font-size:14px}
+    .system-foot{padding:15px 20px 18px;border-top:1px solid var(--line)}
+    .system-foot p{font-size:12px;color:#b6c1ad;min-height:40px;line-height:1.6}
+    .system-foot small{display:block;font:10px var(--mono);color:#829176;margin-top:9px}
+    .hero-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font:11px var(--mono);color:#99a490;letter-spacing:.04em}
+    .hero-bottom a{display:flex;align-items:center;gap:9px}
+    .hero-bottom .icon{width:16px;height:16px}
+    .proof{background:var(--paper);color:var(--ink);padding:31px 0}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .proof-item{padding:6px 32px;border-left:1px solid #cdd2c3;display:flex;align-items:center;gap:22px}
+    .proof-item:first-child{padding-left:0;border:0}
+    .proof-item:last-child{padding-right:0}
+    .proof-number{font-size:43px;line-height:1.1;letter-spacing:-.06em;white-space:nowrap}
+    .proof-number small{font-size:23px;letter-spacing:-.04em}
+    .proof-item p{font-size:12px;line-height:1.6;color:#52604b}
+    .proof-item p strong{display:block;font-size:13px;font-weight:400;color:#263322}
+    #agents{background:#101311}
+    .agent-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:24px}
+    .project{border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel)}
+    .project-art{height:241px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .clinical-art{background:#26312c;background-image:linear-gradient(#d6e7d707 1px,transparent 1px),linear-gradient(90deg,#d6e7d707 1px,transparent 1px);background-size:29px 29px;display:flex;align-items:center;justify-content:center}
+    .art-label{position:absolute;top:20px;left:22px;font:10px var(--mono);letter-spacing:.08em;color:#b7c4ab}
+    .art-index{position:absolute;right:20px;bottom:16px;font:11px var(--mono);color:#9aab90}
+    .clinical-orbit{width:151px;height:151px;position:relative;border:1px solid #778a68;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 0 20px #a4b8910b,0 0 0 42px #a4b89108}
+    .clinical-center{width:81px;height:81px;border-radius:50%;background:#d3e4bc;color:#33452a;display:grid;place-items:center}
+    .clinical-center .icon{width:38px;height:38px;stroke-width:1.2}
+    .orbit-label{position:absolute;font:10px var(--mono);background:#1e2a21;border:1px solid #64735a;color:#c9d8c0;padding:7px 11px;border-radius:4px;white-space:nowrap}
+    .orbit-label.doctor{left:-77px;top:35px}.orbit-label.patient{right:-80px;bottom:33px}
+    .orbit-label.verify{left:24px;bottom:-12px;color:var(--lime)}
+    .training-art{background:#25222e;display:flex;align-items:center;justify-content:center}
+    .training-art::before,.training-art::after{content:"";position:absolute;width:200px;height:200px;border:1px solid #b5a8eb13;transform:rotate(45deg)}
+    .training-art::after{width:276px;height:276px}
+    .training-art .art-label,.training-art .art-index{color:#b7abcf}
+    .agent-chain{display:flex;align-items:center;position:relative;gap:12px;z-index:1}
+    .chain-block{width:71px;height:81px;background:#312c3d;border:1px solid #6d6081;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;color:#d3c7f0;font:10px var(--mono)}
+    .chain-block:nth-of-type(3){background:#b5a8eb;color:#2c223a;border-color:#b5a8eb}
+    .chain-arrow{font:18px var(--mono);color:#81758f}
+    .project-body{padding:29px 30px 26px;display:flex;flex-direction:column;flex:1}
+    .project-top{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:16px}
+    .project-type{font:11px var(--mono);letter-spacing:.03em;color:var(--lime)}
+    .project-status{font:10px var(--mono);color:#a6b39e;border:1px solid #46543c;padding:3px 7px;border-radius:3px}
+    .project h3{font-size:31px;letter-spacing:-.045em;line-height:1.16}
+    .project .description{font-size:14px;line-height:1.8;color:var(--muted);margin-top:17px}
+    .project-stat{display:flex;align-items:center;gap:15px;margin-top:25px;border-top:1px solid var(--line);padding-top:20px}
+    .project-stat strong{font-size:32px;color:var(--lime);font-weight:400;letter-spacing:-.055em;line-height:1}
+    .project-stat p{font:11px/1.55 var(--mono);color:#acb7a1}
+    .project-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;padding-top:27px}
+    .case-button{display:flex;align-items:center;gap:11px;background:none;border:0;padding:7px 0;font-size:13px;color:var(--text)}
+    .case-button .icon{transition:transform .2s;width:17px;height:17px}
+    .case-button:hover .icon{transform:translateX(4px)}
+    .project-footer .text-link{color:#b0baa5;font:11px var(--mono);border-color:#46503c}
+    .agents-note{display:flex;align-items:center;gap:11px;margin-top:24px;font-size:12px;color:#8e9b83}
+    .agents-note .icon{width:15px;height:15px}
+    .hotel-project{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.12fr}
+    .hotel-project .project-art{height:auto;min-height:420px;border-bottom:0;border-right:1px solid #354448}
+    .hotel-project .project-body{padding:35px 36px}
+    .hotel-project h3{font-size:39px}
+    .hotel-art{background:#1b2a30;background-image:radial-gradient(ellipse at 50% 50%,#45818818,transparent 70%);display:flex;align-items:center;justify-content:center;padding:65px 34px}
+    .hotel-art .art-label,.hotel-art .art-index{color:#9bc4cb}
+    .hotel-map{width:100%;max-width:350px;display:grid;gap:19px;position:relative}
+    .hotel-map::before{content:"";position:absolute;inset:35px 50% 35px auto;width:1px;background:#55777d}
+    .hotel-map-node{position:relative;background:#21383d;border:1px solid #52747a;border-radius:6px;padding:15px 18px;display:flex;align-items:center;gap:13px;color:#d3e9e8}
+    .hotel-map-node>.icon{color:#9bdddb;width:23px;height:23px}
+    .hotel-map-node strong{display:block;font-size:14px;line-height:1.5;font-weight:400}
+    .hotel-map-node small{display:block;font:10px/1.6 var(--mono);color:#95bcbf}
+    .hotel-map-core{margin-inline:17px;background:#a9dcd4;color:#193331;border-color:#a9dcd4}
+    .hotel-map-core>.icon{color:#274d46}.hotel-map-core small{color:#416961}
+    .hotel-map-outcomes{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .hotel-map-outcomes div{background:#203339;border:1px solid #496a70;border-radius:5px;padding:13px 12px;font:11px/1.6 var(--mono);text-align:center;color:#afd4d8}
+    .hotel-highlights{display:grid;grid-template-columns:1fr 1fr;gap:11px 16px;margin-top:22px;padding-top:21px;border-top:1px solid var(--line)}
+    .hotel-highlights span{display:flex;align-items:flex-start;gap:8px;font:11px/1.7 var(--mono);color:#bfd2ac}
+    .hotel-highlights .icon{height:14px;width:14px;margin-top:2px;color:var(--lime)}
+    .automation-projects{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:35px}
+    .automation-usecase{padding:29px 30px;border:1px solid #44553b;border-radius:7px;background:#1c271b;display:flex;flex-direction:column}
+    .automation-usecase .project-type{font-size:10px;color:#b6d891}
+    .automation-usecase h3{font-size:24px;margin:16px 0;letter-spacing:-.035em}
+    .automation-usecase>p{font-size:13px;line-height:1.9;color:#a5b99a}
+    .compact-flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:22px 0 7px;color:#d0e5b9;font:10px/1.6 var(--mono)}
+    .compact-flow span{padding:6px 10px;border:1px solid #4d623d;border-radius:3px;background:#26331e}
+    .compact-flow b{font-weight:400;color:#7c9960}
+    .automation-usecase .case-button{margin-top:auto;padding-top:20px;color:#dfebd2;font-size:12px}
+    .support-project{grid-column:1/-1}
+    .support-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:46px;align-items:center}
+    .support-architecture{padding:23px;background:#e6ecdd;border:1px solid #c3ceb5;border-radius:6px}
+    .support-architecture>.eyebrow{font-size:10px;color:#677c4e;margin-bottom:17px}
+    .support-architecture .platform-stack{margin-top:0}
+    .support-architecture .stack-layer:nth-child(3){margin-inline:13px}
+    .support-architecture .stack-layer:nth-child(4){margin-inline:26px;background:#cedbbc}
+    .support-copy>p{font-size:14px;line-height:1.9;color:#5d6b52;margin-top:17px}
+    .support-scope{font:11px/1.8 var(--mono);color:#687b52;margin-top:19px;padding-top:16px;border-top:1px solid #cbd4c0}
+    @media(max-width:900px){.hotel-project{grid-template-columns:.9fr 1.15fr}.hotel-project .project-body{padding:26px}.hotel-project h3{font-size:33px}.hotel-art{padding:58px 21px}.hotel-map-node{padding:14px 13px;gap:9px}.hotel-map-node strong{font-size:12px}.hotel-map-node small{font-size:9px}.hotel-map-outcomes div{font-size:10px;padding:12px 8px}.hotel-highlights{grid-template-columns:1fr;gap:8px}.automation-usecase{padding:25px}.support-grid{gap:29px}.support-architecture{padding:18px}.support-copy>p{font-size:13px}}
+    @media(max-width:680px){.hotel-project{grid-template-columns:1fr}.hotel-project .project-art{min-height:350px;border-right:0;border-bottom:1px solid #354448}.hotel-project .project-body{padding:25px}.hotel-project h3{font-size:32px}.hotel-art{padding:58px 29px}.hotel-map-node{padding:14px 16px}.hotel-map-node strong{font-size:13px}.hotel-map-node small{font-size:10px}.hotel-map-outcomes div{font-size:11px}.hotel-highlights{grid-template-columns:1fr;gap:10px}.automation-projects{grid-template-columns:1fr;gap:22px;margin-top:30px}.automation-usecase{padding:25px}.automation-usecase h3{font-size:25px}.automation-usecase>p{font-size:14px}.support-grid{grid-template-columns:1fr;gap:24px}.support-copy>p{font-size:14px}.support-architecture{padding:19px}.support-architecture .stack-layer{font-size:10px}.support-scope{font-size:11px}}
+    #automation{background:#1a211b;border-top:1px solid #2e3a2b;border-bottom:1px solid #2e3a2b}
+    .automation-header{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:75px;margin-bottom:50px}
+    .automation-header h2{font-size:clamp(38px,4.3vw,57px);margin-top:23px}
+    .automation-header>div:last-child{padding-top:39px}
+    .automation-header p{max-width:470px;font-size:15px;color:#abb8a3;line-height:1.9}
+    .automation-header .pill{margin-top:19px;border-color:#42543a;color:#bed1aa}
+    .automation-workflow{border:1px solid #46553c;background:#20291f;border-radius:8px;padding:30px 34px}
+    .workflow-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:35px}
+    .workflow-heading h3{font-size:24px;letter-spacing:-.04em}
+    .workflow-heading span{font:11px var(--mono);color:#9baa8f}
+    .workflow-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:27px}
+    .workflow-step{position:relative;border:1px solid #45583c;background:#182118;border-radius:6px;padding:20px 18px}
+    .workflow-step:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:24px;font:19px var(--mono);color:#92a676}
+    .step-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px;color:var(--lime)}
+    .step-top span{font:10px var(--mono);color:#778b68}
+    .workflow-step h4{font-size:15px;letter-spacing:-.02em;margin-bottom:9px}
+    .workflow-step p{font-size:12px;color:#9fb191;line-height:1.7}
+    .workflow-bottom{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:27px;padding-top:24px;border-top:1px solid #3c4b35}
+    .workflow-bottom p{max-width:660px;font-size:12px;color:#a5b99a}
+    .workflow-bottom .text-link{white-space:nowrap}
+    .integration-row{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-top:34px}
+    .integration{display:flex;gap:17px;align-items:flex-start}
+    .integration>.icon{width:21px;color:#c5d6b2;margin-top:3px}
+    .integration h3{font-size:17px;letter-spacing:-.02em;margin-bottom:8px}
+    .integration p{font-size:13px;color:#9faf95;line-height:1.85}
+    #engineering{background:var(--paper);color:var(--ink)}
+    #engineering .eyebrow{color:#526743}
+    #engineering .section-head>p{color:#67745d}
+    .engineering-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:26px}
+    .engineering-project{padding:33px 34px;border:1px solid #cad1c1;border-radius:7px;background:#f4f5ef;display:flex;flex-direction:column}
+    .engineering-project .project-type{color:#657a4c}
+    .engineering-project h3{font-size:31px;margin-top:14px;letter-spacing:-.045em}
+    .engineering-project>p{font-size:14px;color:#5d6b52;line-height:1.85;margin-top:17px}
+    .platform-stack{margin-top:29px;display:grid;gap:8px}
+    .stack-layer{display:flex;justify-content:space-between;gap:16px;align-items:center;border:1px solid #cad3be;border-radius:4px;padding:12px 15px;background:#e5ebda;font:11px var(--mono)}
+    .stack-layer span{color:#5c6e4b;text-align:right}
+    .stack-layer:nth-child(2){margin-inline:13px;background:#dce6cd}
+    .stack-layer:nth-child(3){margin-inline:26px;background:#d2debf}
+    .engineering-project .tags{margin-bottom:22px}
+    .engineering-project .tag{color:#667651;border-color:#cbd4bd}
+    .engineering-project .project-footer{border-top:1px solid #cad1c1;margin-top:auto;padding-top:19px}
+    .engineering-project .case-button{color:var(--ink)}
+    .engineering-project .text-link{color:#4c623a;border-color:#b3bfa5}
+    .fraud-metric{display:flex;gap:24px;margin:33px 0 13px;padding-bottom:20px}
+    .fraud-metric div{flex:1}
+    .fraud-metric strong{display:block;font-size:39px;font-weight:400;line-height:1.2;letter-spacing:-.06em}
+    .fraud-metric span{font:11px var(--mono);color:#657653}
+    .fraud-bar{height:7px;border-radius:9px;background:#dce2d4;overflow:hidden}
+    .fraud-bar span{display:block;height:100%;width:92%;background:#667f4b;border-radius:9px}
+    .metric-caption{font:11px/1.6 var(--mono);color:#6e7c63;margin-top:14px}
+    #sadaf{position:relative}
+    .sadaf-intro{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;margin-bottom:49px}
+    .sadaf-intro .eyebrow{color:var(--lime)}
+    .sadaf-intro h2{font-size:clamp(37px,4.3vw,57px);margin-top:22px}
+    .sadaf-intro>div:last-child{padding-top:43px}
+    .sadaf-intro p{font-size:15px;color:var(--muted);line-height:1.9}
+    .sadaf-intro .small-note{font:11px/1.7 var(--mono);margin-top:18px;color:#8d9d81}
+    .opportunities{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .opportunity{border-top:1px solid #596947;padding-top:25px}
+    .opportunity-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:23px;color:#9db77d}
+    .opportunity-top .icon{width:27px;height:27px}
+    .opportunity-top span{font:11px var(--mono)}
+    .opportunity h3{font-size:23px;letter-spacing:-.04em;margin-bottom:15px;line-height:1.25}
+    .opportunity p{font-size:13px;line-height:1.9;color:#a3b196}
+    .opportunity .measure{margin-top:20px;padding-top:16px;border-top:1px solid #2e3b28;font:11px/1.7 var(--mono);color:#c4d4b3}
+    .opportunity .evidence{margin-top:12px;font:11px/1.7 var(--mono);color:#8e9e81}
+    .approach{margin-top:45px;border:1px solid var(--line);border-radius:7px;display:grid;grid-template-columns:1fr 2fr;background:#181d16;padding:25px 29px;gap:32px;align-items:center}
+    .approach>p{font-size:16px;line-height:1.5;letter-spacing:-.025em}
+    .approach ol{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0;padding:0}
+    .approach li{font-size:12px;color:#b0c09f;line-height:1.7}
+    .approach li span{font:10px var(--mono);color:#6e8659;display:block;margin-bottom:5px}
+    .source-links{display:flex;flex-wrap:wrap;gap:20px;margin-top:20px;font:10px var(--mono);color:#819073}
+    .source-links a{border-bottom:1px solid #415239;padding-bottom:2px}
+    #experience{border-top:1px solid var(--line);padding-bottom:90px}
+    .experience-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:100px}
+    .experience-intro .eyebrow{color:#adbd97}
+    .experience-intro h2{font-size:clamp(38px,4.2vw,54px);margin-top:22px}
+    .experience-intro>p{font-size:14px;color:var(--muted);line-height:1.9;margin-top:24px;max-width:395px}
+    .education{margin-top:36px;border-top:1px solid var(--line);padding-top:24px}
+    .education h3{font-size:16px;letter-spacing:-.02em}
+    .education p{font-size:13px;color:#a0b192;margin-top:11px;line-height:1.8}
+    .education .text-link{font:11px var(--mono);color:#adbf9c;margin-top:15px}
+    .timeline{list-style:none;margin:0;padding:0}
+    .timeline li{position:relative;padding:0 0 35px 25px;border-left:1px solid #44513c}
+    .timeline li:last-child{padding-bottom:0}
+    .timeline li::before{content:"";width:7px;height:7px;position:absolute;top:6px;left:-4px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px var(--bg)}
+    .timeline time{font:11px var(--mono);color:#94a582}
+    .timeline h3{font-size:21px;letter-spacing:-.03em;margin-top:11px}
+    .timeline .role{font-size:13px;color:#d1daca;margin-top:8px}
+    .timeline p{font-size:13px;color:#96a38c;line-height:1.9;margin-top:11px}
+    .timeline .text-link{font:11px var(--mono);margin-top:13px;color:#b8cba3}
+    .skills{margin-top:76px;padding-top:29px;border-top:1px solid var(--line);display:grid;grid-template-columns:.65fr 2fr;gap:45px}
+    .skills h3{font-size:24px;letter-spacing:-.035em}
+    .skills>div{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .skill-group h4{font:11px var(--mono);color:#cee4b2;letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase}
+    .skill-group p{font-size:12px;line-height:2.1;color:#96a88a}
+    .contact{background:var(--lime);color:var(--ink);padding:74px 0 68px;overflow:hidden}
+    .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+    .contact .eyebrow{color:#5c7140;font-size:11px}
+    .contact h2{font-size:clamp(42px,5vw,68px);margin-top:23px;max-width:550px}
+    .contact p{font-size:14px;color:#526339;margin-top:23px;max-width:425px;line-height:1.85}
+    .contact-details{padding-top:17px}
+    .email-link{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #8cac55;padding:0 0 19px;font-size:clamp(14px,1.65vw,21px);letter-spacing:-.03em;overflow-wrap:anywhere}
+    .email-link .icon{width:24px;height:24px}
+    .contact-options{display:flex;align-items:center;justify-content:space-between;gap:17px;flex-wrap:wrap;margin-top:21px;font:12px var(--mono)}
+    .copy-email{display:flex;align-items:center;gap:8px;border:0;background:transparent;padding:4px 0;color:#3d5226}
+    .copy-email .icon{width:15px;height:15px}
+    .socials{display:flex;gap:22px;flex-wrap:wrap;margin-top:35px}
+    .socials a{display:flex;gap:8px;align-items:center;font-size:13px}
+    .socials a .icon{width:15px;height:15px}
+    .socials a:hover,.email-link:hover{text-decoration:underline;text-underline-offset:5px}
+    .contact a:focus-visible,.contact button:focus-visible{outline-color:var(--ink)}
+    footer{padding:27px 0 31px;background:#101311}
+    .footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center;font-size:12px;color:#7e8a75}
+    .footer-row .footer-name{color:#b6c2aa}
+    .footer-note{font:10px/1.8 var(--mono);max-width:545px;text-align:right}
+    .footer-note a{text-decoration:underline;text-underline-offset:3px}
+    dialog{background:#1b221a;color:var(--text);border:1px solid #596d48;border-radius:12px;width:min(740px,calc(100% - 32px));max-height:85dvh;padding:0;box-shadow:0 30px 130px #0008;scrollbar-color:#5b6b4c #1b221a}
+    dialog::backdrop{background:#070a08c9;backdrop-filter:blur(7px)}
+    .dialog-top{position:sticky;top:0;background:#1b221a;padding:20px 28px;border-bottom:1px solid #37482c;display:flex;justify-content:space-between;align-items:center;z-index:1}
+    .dialog-top span{font:11px var(--mono);color:#aac18d;letter-spacing:.03em}
+    .dialog-close{background:#2d3827;border:1px solid #516143;border-radius:50%;padding:7px}
+    .dialog-close .icon{width:17px;height:17px}
+    .dialog-body{padding:31px 35px 35px}
+    .dialog-body h2{font-size:37px;margin-bottom:17px;letter-spacing:-.045em}
+    .dialog-body .dialog-summary{font-size:14px;line-height:1.9;color:#b2c2a3}
+    .dialog-body h3{font-size:18px;letter-spacing:-.02em;margin:27px 0 12px;color:#e0ebd5}
+    .dialog-body p,.dialog-body li{font-size:13px;line-height:1.9;color:#a8b99a}
+    .dialog-body ul{margin:0;padding-left:20px}
+    .dialog-body li+li{margin-top:8px}
+    .dialog-evidence{margin-top:26px;padding:19px 22px;border-radius:6px;background:#25301f;border:1px solid #415633}
+    .dialog-evidence h3{margin-top:0;color:var(--lime)}
+    .dialog-links{display:flex;flex-wrap:wrap;gap:20px;margin-top:27px}
+    .dialog-links .text-link{color:var(--lime)}
+    .reveal{opacity:1;transform:none}
+    .motion-ready .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+    .motion-ready .reveal.in-view{opacity:1;transform:none}
+    .toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);padding:13px 21px;border:1px solid #637d49;background:#26301f;color:#e5f3d5;font:12px var(--mono);border-radius:5px;box-shadow:0 12px 40px #0005;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60;text-align:center;min-width:230px;max-width:calc(100% - 30px)}
+    .toast.visible{opacity:1;transform:translate(-50%,0)}
+    @media(min-width:1500px){.hero{padding-top:100px;padding-bottom:66px}.hero h1{font-size:111px}.architecture{height:375px}.core{top:139px}}
+    @media(max-width:1150px){.wrap{width:calc(100% - 72px)}.hero-grid{gap:35px}.hero h1{font-size:clamp(64px,7.8vw,91px)}.nav-links{gap:20px}.hero-copy{font-size:15px}.proof-item{gap:16px;padding-inline:24px}.proof-number{font-size:36px}.proof-item p{font-size:11px}.node{padding:10px 8px;gap:6px}.node .node-symbol{width:23px}.node strong{font-size:11px}.node small{font-size:9px}.sadaf-intro,.experience-grid{gap:55px}.workflow-step{padding:17px 13px}.approach{grid-template-columns:.8fr 2fr}.system-tabs button{padding-inline:9px}.project h3{font-size:27px}.skills{gap:28px}}
+    @media(max-width:900px){.wrap{width:calc(100% - 48px)}.topbar{height:77px}.nav-links{gap:15px}.nav-links a{font-size:12px}.nav-contact{display:none}.hero{padding-top:59px}.hero-grid{gap:26px;grid-template-columns:1.1fr 1fr}.hero h1{font-size:clamp(51px,7.6vw,70px)}.hero .eyebrow{font-size:10px;gap:8px}.hero-actions{gap:9px}.button{font-size:12px;padding-inline:15px;gap:14px}.hero-copy{font-size:14px}.hero-meta{font-size:10px;gap:14px}.system-top{padding:14px 15px;font-size:9px}.system-tabs{padding:12px 11px 0;gap:2px}.system-tabs button{font-size:10px;padding:7px 5px}.architecture{margin-inline:12px;height:310px}.node{width:45%;min-height:59px;gap:6px}.node .node-symbol{display:none}.node strong{font-size:11px}.node-a{left:0}.node-b{right:0}.node-c{left:0}.node-d{right:0}.core{top:117px;width:153px;height:73px}.core strong{font-size:15px}.core small{font-size:9px}.system-foot{padding:12px 15px}.system-foot p{font-size:11px;min-height:50px}.system-foot small{font-size:9px}.hero-bottom{margin-top:48px}.proof-item{display:block;padding-inline:22px}.proof-item p{margin-top:9px}.proof-number{font-size:38px}.section{padding:83px 0}.section-head{gap:35px}.section-head h2{font-size:43px}.section-head>p{max-width:260px;font-size:13px}.agent-grid{gap:18px;grid-template-columns:1.15fr 1fr}.project-body{padding:24px 22px}.project-art{height:215px}.project h3{font-size:26px}.project-top{flex-wrap:wrap;gap:8px}.project .description{font-size:13px}.project-stat strong{font-size:29px}.project-stat p{font-size:10px}.agent-chain{gap:8px}.chain-block{width:58px;height:73px;font-size:9px}.art-label{font-size:9px;left:17px}.automation-header{gap:40px}.automation-header h2{font-size:43px}.automation-header p{font-size:13px}.workflow-steps{gap:21px}.workflow-step:not(:last-child)::after{right:-18px}.workflow-step{padding:16px 12px}.workflow-step h4{font-size:14px}.workflow-step p{font-size:11px}.automation-workflow{padding:25px}.engineering-project{padding:27px 25px}.engineering-project h3{font-size:27px}.engineering-project>p{font-size:13px}.sadaf-intro{gap:43px}.sadaf-intro h2{font-size:43px}.sadaf-intro p{font-size:13px}.opportunities{gap:22px}.opportunity h3{font-size:20px}.opportunity p{font-size:12px}.approach{padding:22px;grid-template-columns:1fr}.approach ol{gap:24px}.experience-grid{gap:44px;grid-template-columns:.9fr 1.2fr}.experience-intro h2{font-size:43px}.timeline h3{font-size:20px}.skills{grid-template-columns:1fr;gap:25px;margin-top:58px}.contact-grid{gap:35px}.contact h2{font-size:49px}.contact-options{font-size:11px;gap:9px}.email-link{font-size:15px}.socials{gap:17px}}
+    @media(max-width:680px){html{scroll-padding-top:89px}.wrap{width:calc(100% - 40px)}.topbar{height:73px}.nav{gap:12px}.brand-name{font-size:12px}.brand-name span{font-size:10px}.mark{width:36px;height:36px;font-size:14px}.menu-toggle{display:block}.nav-links{position:absolute;top:72px;left:0;width:100%;background:#181e17;border-bottom:1px solid #3d4b34;display:none;padding:14px 20px;flex-direction:column;gap:0;align-items:stretch}.nav-links.open{display:flex}.nav-links a{display:block;font-size:14px;padding:12px}.nav-contact{display:none}.hero{padding:48px 0 31px}.hero-grid{grid-template-columns:1fr;gap:43px}.hero .eyebrow{font-size:11px}.hero h1{font-size:clamp(57px,12.8vw,80px);margin-top:26px;margin-bottom:25px}.hero-copy{font-size:15px;max-width:470px;line-height:1.85}.hero-actions{margin-top:28px;gap:10px}.button{font-size:13px;min-height:48px;padding-inline:19px;gap:17px}.hero-meta{font-size:11px;margin-top:28px;gap:15px}.system{transform:none;max-width:480px;width:100%;margin-inline:auto}.system-top{font-size:10px;padding:16px 19px}.system-tabs{padding:14px 15px 0;gap:6px}.system-tabs button{font-size:11px;padding:8px}.architecture{height:324px;margin-inline:18px}.node{width:43%;min-height:62px;padding:10px;gap:7px}.node .node-symbol{display:grid;width:24px}.node strong{font-size:11px}.node small{font-size:9px}.core{top:122px;width:169px;height:80px}.core strong{font-size:16px}.core small{font-size:10px}.system-foot{padding:15px 19px}.system-foot p{font-size:12px;min-height:38px}.system-foot small{font-size:10px}.hero-bottom{margin-top:32px;font-size:10px;gap:16px;padding-top:19px}.hero-bottom span{max-width:180px}.proof{padding:23px 0}.proof-grid{gap:0}.proof-item{padding:0 12px;display:block}.proof-number{font-size:29px}.proof-number small{font-size:16px}.proof-item p{font-size:10px;line-height:1.6;margin-top:9px}.proof-item p strong{font-size:10px}.section{padding:69px 0}.eyebrow{font-size:11px}.section-head{display:block;margin-bottom:31px}.section-head h2{font-size:39px;margin-top:18px}.section-head>p{max-width:400px;margin-top:22px;font-size:14px}.agent-grid{grid-template-columns:1fr;gap:25px}.project-art{height:233px}.project-body{padding:25px}.project h3{font-size:29px}.project .description{font-size:14px}.project-top{flex-wrap:nowrap}.project-stat strong{font-size:33px}.project-stat p{font-size:11px}.project-footer{padding-top:22px}.agent-chain{gap:14px}.chain-block{width:72px;height:82px;font-size:10px}.art-label{font-size:10px;left:20px}.agents-note{font-size:11px;align-items:flex-start;line-height:1.8}.agents-note .icon{margin-top:4px}.automation-header{grid-template-columns:1fr;gap:24px;margin-bottom:33px}.automation-header h2{font-size:40px;margin-top:18px}.automation-header>div:last-child{padding-top:0}.automation-header p{font-size:14px}.automation-workflow{padding:25px 23px}.workflow-heading{margin-bottom:26px;align-items:flex-start}.workflow-heading h3{font-size:22px;max-width:230px}.workflow-heading span{font-size:10px;text-align:right;max-width:75px;line-height:1.7}.workflow-steps{grid-template-columns:1fr;gap:21px}.workflow-step{padding:18px 19px;display:grid;grid-template-columns:39px 1fr;column-gap:13px}.step-top{grid-row:1 / span 2;flex-direction:column;justify-content:flex-start;margin:0;gap:13px;padding-top:2px}.workflow-step h4{font-size:16px;line-height:1.4}.workflow-step p{font-size:12px}.workflow-step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-19px;font-size:17px}.workflow-bottom{display:block;margin-top:23px;padding-top:21px}.workflow-bottom p{font-size:12px}.workflow-bottom .text-link{margin-top:12px}.integration-row{grid-template-columns:1fr;gap:27px;margin-top:29px}.integration h3{font-size:17px}.integration p{font-size:13px}.engineering-grid{grid-template-columns:1fr;gap:23px}.engineering-project{padding:27px 25px}.engineering-project h3{font-size:29px}.engineering-project>p{font-size:14px}.stack-layer{padding:11px 12px;font-size:10px}.stack-layer span{max-width:145px}.fraud-metric{margin-top:30px}.sadaf-intro{grid-template-columns:1fr;gap:23px;margin-bottom:33px}.sadaf-intro h2{font-size:40px;margin-top:18px}.sadaf-intro>div:last-child{padding-top:0}.sadaf-intro p{font-size:14px}.opportunities{grid-template-columns:1fr;gap:32px}.opportunity{padding-top:22px}.opportunity-top{margin-bottom:17px}.opportunity h3{font-size:24px}.opportunity p{font-size:14px}.opportunity .measure{font-size:12px;margin-top:18px}.opportunity .evidence{font-size:11px}.approach{margin-top:33px;padding:23px;gap:23px}.approach ol{grid-template-columns:1fr 1fr;gap:23px}.approach li{font-size:12px}.source-links{gap:16px;font-size:10px}.experience-grid{grid-template-columns:1fr;gap:41px}.experience-intro h2{font-size:40px;margin-top:18px}.experience-intro>p{font-size:14px;max-width:450px}.education{margin-top:28px;padding-top:22px}.timeline h3{font-size:23px}.timeline p{font-size:14px}.timeline .role{font-size:14px}.skills{margin-top:47px;padding-top:25px}.skills>div{grid-template-columns:1fr;gap:25px}.skill-group p{font-size:13px;line-height:1.95}.skill-group h4{font-size:11px;margin-bottom:7px}.contact{padding:57px 0}.contact-grid{grid-template-columns:1fr;gap:28px}.contact h2{font-size:47px;margin-top:21px}.contact p{font-size:14px;max-width:450px}.contact-details{padding-top:3px}.email-link{font-size:clamp(14px,4.2vw,19px)}.contact-options{font-size:12px;gap:17px}.socials{margin-top:29px;gap:24px}.footer-row{display:block;font-size:12px}.footer-note{text-align:left;font-size:10px;margin-top:15px;max-width:400px}.dialog-top{padding:17px 22px}.dialog-body{padding:26px 24px 29px}.dialog-body h2{font-size:31px}.dialog-body .dialog-summary{font-size:13px}.dialog-evidence{padding:17px}}
+    @media(max-width:360px){.wrap{width:calc(100% - 32px)}.hero h1{font-size:54px}.hero .eyebrow{font-size:10px}.button{padding-inline:15px;font-size:12px}.node .node-symbol{display:none}.node{width:44%}.system-tabs button{font-size:10px}.proof-number{font-size:25px}.proof-item{padding-inline:9px}.project-body{padding:22px}.project h3{font-size:27px}.project-top{flex-wrap:wrap}.hero-meta{gap:12px;font-size:10px}.contact h2{font-size:43px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.motion-ready .reveal{opacity:1;transform:none}}
+    @media print{.topbar,.system,.hero-bottom,.hero-actions,.contact,.menu-toggle,.project-art,.case-button,.toast,dialog,.source-links{display:none!important}body,.hero,#agents,#automation,#engineering,#sadaf,#experience,footer{background:white!important;color:black!important}.wrap{width:100%}.section{padding:24px 0}.hero{padding:0 0 25px}.hero-grid,.experience-grid,.sadaf-intro,.automation-header{display:block}.hero h1{font-size:48px}.hero h1 span,.hero .eyebrow{color:black}.hero-copy,.muted,p{color:#333!important}.proof{padding:15px 0}.proof-number{font-size:30px}.section-head{margin-bottom:20px}.section-head h2{font-size:30px}.project,.engineering-project{background:white;border-color:#aaa;break-inside:avoid}.project h3{font-size:24px}.tag{color:#333;border-color:#bbb}.skills{margin-top:30px}.reveal,.motion-ready .reveal{opacity:1!important;transform:none!important}a[href^="https"]::after{content:" (" attr(href) ")";font-size:8px;overflow-wrap:anywhere}.timeline li::before{background:#333}.timeline li{border-color:#aaa}.approach{background:white;border-color:#aaa}.workflow-step,.automation-workflow{background:white;border-color:#aaa}.proof-item p strong{color:#222}.footer-note{text-align:left}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mohammad Ashraf Mohammad Elsayed","jobTitle":"AI & Machine Learning Engineer","email":"mohammad.a.hammad.eng@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Cairo","addressCountry":"EG"},"sameAs":["https://github.com/YACIINE105","https://www.linkedin.com/in/mohammad-a-hmmad-7181a7208"],"knowsAbout":["AI Agents","Retrieval-Augmented Generation","LangGraph","FastAPI","n8n","Machine Learning"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Port Said University"}}</script>
+</head>
+<body>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v14m-6-6 6 6 6-6M4 20h16"/></symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H5V3h2m7 0v5h4M8 12h7m-7 4h7"/></symbol>
+      <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4m4 5h8m-8 3h5"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></symbol>
+      <symbol id="i-flow" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="6" rx="1"/><rect x="2" y="16" width="7" height="6" rx="1"/><rect x="15" y="16" width="7" height="6" rx="1"/><path d="M12 8v4H5v4m7-4h7v4"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6m10-6v6M3 11h18m-14 4h3m4 0h3"/></symbol>
+      <symbol id="i-health" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3"/></symbol>
+      <symbol id="i-voice" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6l9-4m-4 10 3 3 5-6"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 5 10 8L22 5"/></symbol>
+      <symbol id="i-hotel" viewBox="0 0 24 24"><path d="M4 21V3h12v18M16 9h4v12M2 21h20M8 7h4M8 11h4M8 15h4M9 21v-3h3v3"/></symbol>
+    </defs>
+  </svg>
+  <noscript><style>@media(max-width:680px){.topbar{position:relative;height:auto;min-height:73px}.nav{flex-wrap:wrap;padding-block:17px}.nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;padding:0;background:none;border:0;gap:10px}.nav-links a{padding:8px 0;font-size:12px}.menu-toggle{display:none}}</style></noscript>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#overview" aria-label="Mohammad Elsayed, back to overview"><span class="mark" aria-hidden="true">me.</span><span class="brand-name">Mohammad Elsayed<span>AI & ML ENGINEER</span></span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#agents">AI agents</a></li>
+        <li><a href="#automation">Automation</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+      <a class="nav-contact" href="#contact">Let’s talk <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="overview" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow"><span class="dash" aria-hidden="true"></span>AI engineer · Agents & automation</p>
+            <h1 id="hero-title">Intelligence.<span>Put to work.</span></h1>
+            <p class="hero-copy">I’m <strong>Mohammad Elsayed</strong>. I build AI agents, retrieval systems, and automations that turn complex tasks into usable tools—with the engineering and evaluation to back them up.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#agents">Explore my work <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="button secondary cv-link" href="assets/Mohammad_Elsayed_CV.pdf" download="Mohammad_Elsayed_CV.pdf">Download CV <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a>
+            </div>
+            <div class="hero-meta"><span><span class="dot" aria-hidden="true"></span>Cairo, Egypt</span><span>Arabic & English</span><span>Python at the core</span></div>
+          </div>
+          <div class="system" aria-label="Interactive overview of my project architectures">
+            <div class="system-top"><span>FROM CONTEXT TO ACTION</span><span><span class="dot" aria-hidden="true"></span>SYSTEM VIEW</span></div>
+            <div class="system-tabs" role="tablist" aria-label="Architecture views">
+              <button id="tab-agents" role="tab" aria-selected="true" aria-controls="architecture-panel" data-system="agents">AI agents</button>
+              <button id="tab-automation" role="tab" aria-selected="false" aria-controls="architecture-panel" tabindex="-1" data-system="automation">Automation</button>
+              <button id="tab-platform" role="tab" aria-selected="false" aria-controls="architecture-panel" tabindex="-1" data-system="platform">Platform</button>
+            </div>
+            <div id="architecture-panel" role="tabpanel" aria-labelledby="tab-agents" tabindex="0">
+              <div class="architecture">
+                <svg class="wires" viewBox="0 0 420 350" preserveAspectRatio="none" aria-hidden="true"><path d="M95 75v28q0 14 14 14h67q34 0 34 35M326 75v28q0 14-14 14h-67q-35 0-35 35M210 200v31q0 16-16 16h-84q-15 0-15 15v26M210 200v31q0 16 16 16h84q16 0 16 15v26"/><path class="flow" d="M95 75v28q0 14 14 14h67q34 0 34 35v48 31q0 16 16 16h84q16 0 16 15v26"/></svg>
+                <div class="node node-a"><span class="node-symbol"><svg class="icon" aria-hidden="true"><use id="node-a-icon" href="#i-doc"/></svg></span><div><strong id="node-a-title">Knowledge</strong><small id="node-a-sub">Clinical guidelines</small></div></div>
+                <div class="node node-b"><span class="node-symbol"><svg class="icon" aria-hidden="true"><use id="node-b-icon" href="#i-chat"/></svg></span><div><strong id="node-b-title">User context</strong><small id="node-b-sub">Arabic / English</small></div></div>
+                <div class="core"><span class="core-spark" aria-hidden="true">✧</span><strong id="core-title">LangGraph</strong><small id="core-sub">Multi-agent supervisor</small></div>
+                <div class="node node-c"><span class="node-symbol"><svg class="icon" aria-hidden="true"><use id="node-c-icon" href="#i-db"/></svg></span><div><strong id="node-c-title">Hybrid retrieval</strong><small id="node-c-sub">RRF + reranking</small></div></div>
+                <div class="node node-d"><span class="node-symbol"><svg class="icon" aria-hidden="true"><use id="node-d-icon" href="#i-check"/></svg></span><div><strong id="node-d-title">Grounded answer</strong><small id="node-d-sub">Relevance grading</small></div></div>
+              </div>
+              <div class="system-foot"><p id="system-description">A supervisor coordinates context, retrieval, and relevance checks to produce an evidence-grounded response.</p><small>INTERACTIVE ARCHITECTURE OVERVIEW · SELECT A VIEW ABOVE</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-bottom"><span>BUILT AROUND USEFUL OUTCOMES.</span><a href="#agents">Selected work, below <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a></div>
+      </div>
+    </section>
+    <section class="proof" aria-label="Selected project results">
+      <div class="wrap proof-grid">
+        <div class="proof-item"><div class="proof-number">92.5<small>%</small></div><p><strong>Retrieval precision@1</strong>40-question clinical evaluation</p></div>
+        <div class="proof-item"><div class="proof-number">Top 3</div><p><strong>AI hackathon placement</strong>Out of 20 participating teams</p></div>
+        <div class="proof-item"><div class="proof-number">94<small>%</small></div><p><strong>Temperature forecast R²</strong>PM Accelerator ML pipeline</p></div>
+      </div>
+    </section>
+    <section class="section" id="agents" aria-labelledby="agents-title">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="eyebrow"><span class="dash" aria-hidden="true"></span>01 / AI agent projects</p><h2 id="agents-title">Beyond a prompt.<br>A complete workflow.</h2></div><p>Agents that retrieve knowledge, use tools, manage context, and connect to interfaces people can actually use.</p></div>
+        <div class="agent-grid">
+          <article class="project hotel-project reveal" id="project-hotel">
+            <div class="project-art hotel-art" aria-hidden="true">
+              <span class="art-label">HOTEL AGENT / KNOWLEDGE → TOOLS → REVIEW</span>
+              <div class="hotel-map">
+                <div class="hotel-map-node"><svg class="icon"><use href="#i-hotel"/></svg><div><strong>Guest session</strong><small>Approved facts · EN / AR / FR</small></div></div>
+                <div class="hotel-map-node hotel-map-core"><svg class="icon"><use href="#i-flow"/></svg><div><strong>TurnRunner</strong><small>Guarded tool calls · streamed replies</small></div></div>
+                <div class="hotel-map-outcomes"><div>Quote → Guest confirm</div><div>Handoff → Staff inbox</div></div>
+              </div>
+              <span class="art-index">FEATURED / TEXT · VOICE · MCP</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top"><span class="project-type">TOOL-USING AI · GUEST SERVICES</span><span class="project-status">Working prototype</span></div>
+              <h3>Hotel Agent</h3>
+              <p class="description">A multilingual AI front desk with an embeddable widget, streaming voice, and a staff inbox. It answers from approved hotel knowledge, searches availability, prepares quotes, and requires the guest to confirm a booking.</p>
+              <div class="hotel-highlights"><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>EN / AR / FR text</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>English voice + barge-in</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Idempotent booking workflow</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Travel search via trivago MCP</span></div>
+              <div class="tags"><span class="tag">FastAPI</span><span class="tag">Tool calling</span><span class="tag">SSE / WebSocket</span><span class="tag">PostgreSQL</span><span class="tag">MCP</span></div>
+              <div class="project-footer"><button class="case-button" data-case="hotel">Explore case study <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><a class="text-link" href="https://github.com/YACIINE105/hotel_agent" target="_blank" rel="noopener noreferrer">Repository <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div>
+            </div>
+          </article>
+          <article class="project reveal">
+            <div class="project-art clinical-art" aria-hidden="true"><span class="art-label">CONTEXT → RETRIEVE → VERIFY</span><div class="clinical-orbit"><div class="clinical-center"><svg class="icon"><use href="#i-health"/></svg></div><span class="orbit-label doctor">Doctor agent</span><span class="orbit-label patient">Patient agent</span><span class="orbit-label verify">Relevance check</span></div><span class="art-index">PROJECT / 01</span></div>
+            <div class="project-body">
+              <div class="project-top"><span class="project-type">AGENTIC RAG · MULTI-AGENT</span><span class="project-status">Hackathon project</span></div>
+              <h3>Clinical Guidelines<br>AI Assistant</h3>
+              <p class="description">An agentic assistant for navigating clinical guidelines. I built the retrieval pipeline and role-based supervisor, with Arabic/English checkers and access through an API, voice, and Telegram.</p>
+              <div class="project-stat"><strong>92.5%</strong><p>precision@1 on 40 questions<br>100% source-document retrieval accuracy</p></div>
+              <div class="tags"><span class="tag">LangGraph</span><span class="tag">Hybrid search</span><span class="tag">Cross-encoder</span><span class="tag">FastAPI</span></div>
+              <div class="project-footer"><button class="case-button" data-case="clinical">Explore case study <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><a class="text-link" href="https://github.com/NotMohamedHany/clinical-rag" target="_blank" rel="noopener noreferrer">Repository <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div>
+            </div>
+          </article>
+          <article class="project reveal">
+            <div class="project-art training-art" aria-hidden="true"><span class="art-label">INTENT → TOOL CALL → RESULT</span><div class="agent-chain"><div class="chain-block"><svg class="icon"><use href="#i-chat"/></svg>Understand</div><span class="chain-arrow">→</span><div class="chain-block"><svg class="icon"><use href="#i-flow"/></svg>Orchestrate</div><span class="chain-arrow">→</span><div class="chain-block"><svg class="icon"><use href="#i-code"/></svg>Execute</div></div><span class="art-index">PROJECT / 02</span></div>
+            <div class="project-body">
+              <div class="project-top"><span class="project-type">TOOL-USING AGENTS</span><span class="project-status">Orange training</span></div>
+              <h3>LLM Agents<br>& Knowledge Tools</h3>
+              <p class="description">Practical agents developed during Orange Business Center training: intent recognition, dynamic task execution, structured outputs, and RAG over documents and Excel data.</p>
+              <div class="project-stat"><strong style="color:var(--purple)">3 months</strong><p>Hands-on AI agent training<br>July–September 2026 · Cairo</p></div>
+              <div class="tags"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">Tool calling</span><span class="tag">Structured outputs</span></div>
+              <div class="project-footer"><button class="case-button" data-case="orange">Explore the approach <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><a class="text-link" href="https://drive.google.com/file/d/1m_azLQuwF2MameA2sUEWdQXZRem4MvOl/view?usp=sharing" target="_blank" rel="noopener noreferrer">Demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div>
+            </div>
+          </article>
+        </div>
+        <p class="agents-note"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg>Project evidence comes from my CV and linked repositories. Case studies explain the implementation and scope.</p>
+      </div>
+    </section>
+    <section class="section" id="automation" aria-labelledby="automation-title">
+      <div class="wrap">
+        <div class="automation-header reveal"><div><p class="eyebrow"><span class="dash" aria-hidden="true"></span>02 / Automation & integrations</p><h2 id="automation-title">Make the next step<br>happen.</h2></div><div><p>From n8n appointment scheduling to guest-confirmed bookings and support escalation logic, I connect interactions to repeatable workflows—with explicit states, permissions, and recovery paths.</p><span class="pill"><span class="dot" aria-hidden="true"></span>n8n + custom Python workflows</span></div></div>
+        <div class="automation-workflow reveal">
+          <div class="workflow-heading"><h3>Appointment scheduling workflow</h3><span>n8n · AGENT INTEGRATION</span></div>
+          <ol class="workflow-steps">
+            <li class="workflow-step"><div class="step-top"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>01</span></div><h4>Conversation</h4><p>A user interacts with the clinical assistant.</p></li>
+            <li class="workflow-step"><div class="step-top"><svg class="icon" aria-hidden="true"><use href="#i-flow"/></svg><span>02</span></div><h4>Agent handoff</h4><p>The interaction connects to the scheduling workflow.</p></li>
+            <li class="workflow-step"><div class="step-top"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>03</span></div><h4>n8n automation</h4><p>The workflow handles the appointment action.</p></li>
+            <li class="workflow-step"><div class="step-top"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>04</span></div><h4>Scheduled task</h4><p>Appointment scheduling extends the agent into a practical service.</p></li>
+          </ol>
+          <div class="workflow-bottom"><p>Agent actions connected to a repeatable workflow, with an API and multiple interaction channels. Explore the case study for the implementation context.</p><button class="case-button" data-case="automation">View implementation context <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+        </div>
+        <div class="integration-row">
+          <div class="integration reveal"><svg class="icon" aria-hidden="true"><use href="#i-voice"/></svg><div><h3>Voice & Telegram access</h3><p>Text and voice interactions through a Telegram bot, plus STT/TTS via Colab exposed through Cloudflare Tunnel. A project prototype with multiple access channels.</p></div></div>
+          <div class="integration reveal"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><div><h3>An API behind the experience</h3><p>FastAPI with asynchronous REST endpoints, SSE streaming, and session management connects agent behavior to application interfaces.</p></div></div>
+        </div>
+        <div class="automation-projects">
+          <article class="automation-usecase reveal"><span class="project-type">HOTEL AGENT · CUSTOM-CODED AUTOMATION</span><h3>Bookings with a recovery path.</h3><p>Explicit guest confirmation, duplicate-submit protection, price-change reconfirmation, and timeout reconciliation. If the supplier cannot be reached, the workflow routes the case to staff review.</p><div class="compact-flow" aria-label="Booking workflow"><span>Quote</span><b aria-hidden="true">→</b><span>Guest confirm</span><b aria-hidden="true">→</b><span>Submit</span></div><button class="case-button" data-case="hotel">Explore booking & agent design <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></article>
+          <article class="automation-usecase reveal"><span class="project-type">CUSTOMERSUPPORT · BACKEND WORKFLOW</span><h3>Escalations that keep their context.</h3><p>Role checks, assignment rules, and a single unresolved escalation per conversation. Escalation changes update the parent conversation within the request transaction and preserve lifecycle rules.</p><div class="compact-flow" aria-label="Escalation workflow"><span>Escalate</span><b aria-hidden="true">→</b><span>Assign</span><b aria-hidden="true">→</b><span>Resolve</span></div><button class="case-button" data-case="support">Explore the support backend <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="engineering" aria-labelledby="engineering-title">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="eyebrow"><span class="dash" aria-hidden="true"></span>03 / Platform & machine learning</p><h2 id="engineering-title">The engineering<br>underneath the AI.</h2></div><p>Modular backends, thoughtful retrieval, reproducible deployments, and model evaluation.</p></div>
+        <div class="engineering-grid">
+          <article class="engineering-project support-project reveal" id="project-support">
+            <div class="support-grid">
+              <div class="support-copy"><span class="project-type">CUSTOMERSUPPORT · BACKEND FOUNDATION</span><h3>Customer Support Platform</h3><p>A modular FastAPI backend for the full support interaction lifecycle: customers, conversations, human-agent assignment, messages, escalations, and provider-independent call records.</p><div class="tags"><span class="tag">Async SQLAlchemy</span><span class="tag">PostgreSQL</span><span class="tag">JWT / roles</span><span class="tag">Alembic</span><span class="tag">Docker</span></div></div>
+              <div class="support-architecture"><p class="eyebrow">IMPLEMENTED / MODULAR MONOLITH</p><div class="platform-stack" aria-label="CustomerSupport architecture"><div class="stack-layer">API & VALIDATION <span>Routes · controllers · Pydantic</span></div><div class="stack-layer">ACCESS CONTROL <span>Active staff · JWT · role checks</span></div><div class="stack-layer">WORKFLOW SERVICES <span>Assignment · escalation · call states</span></div><div class="stack-layer">PERSISTENCE <span>Repositories · transactions · migrations</span></div></div><p class="support-scope">Backend implementation in progress. LLM/RAG, a frontend, and telephony integrations are planned extensions.</p></div>
+            </div>
+            <div class="project-footer"><button class="case-button" data-case="support">Explore backend case study <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><a class="text-link" href="https://github.com/YACIINE105/CustomerSupport" target="_blank" rel="noopener noreferrer">Repository <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div>
+          </article>
+          <article class="engineering-project reveal"><span class="project-type">GRADUATION PROJECT · RAG PLATFORM</span><h3>AdvancedRAG</h3><p>A modular retrieval framework built around FastAPI. A provider factory switches between OpenAI, Cohere, and Google LLMs, with Qdrant or pgvector for vector storage.</p><div class="platform-stack" aria-label="AdvancedRAG architecture layers"><div class="stack-layer">APPLICATION API <span>FastAPI</span></div><div class="stack-layer">RETRIEVAL & PROVIDERS <span>Hybrid search · semantic cache</span></div><div class="stack-layer">DATA & DEPLOYMENT <span>PostgreSQL · Alembic · Docker</span></div></div><div class="tags"><span class="tag">Token-aware chunking</span><span class="tag">Metadata search</span><span class="tag">SQLAlchemy</span></div><div class="project-footer"><button class="case-button" data-case="advancedrag">Explore the platform <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><a class="text-link" href="https://github.com/YACIINE105/rag-ishms" target="_blank" rel="noopener noreferrer">Repository <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></article>
+          <article class="engineering-project reveal"><span class="project-type">APPLIED ML · MAY 2025</span><h3>Credit Card Fraud Detection</h3><p>A machine learning pipeline for severe class imbalance. I compared resampling strategies and model families, then tuned the decision threshold against precision and recall.</p><div class="fraud-metric"><div><strong>0.88</strong><span>F1 score</span></div><div><strong>0.84</strong><span>Recall</span></div><div><strong>0.92</strong><span>Precision</span></div></div><div class="fraud-bar" role="img" aria-label="Best Random Forest model precision: 92 percent"><span></span></div><div class="metric-caption">Best Random Forest model · evaluated on the project dataset</div><div class="tags"><span class="tag">Scikit-learn</span><span class="tag">Random Forest</span><span class="tag">SMOTE</span><span class="tag">Threshold analysis</span></div><div class="project-footer"><button class="case-button" data-case="fraud">Explore the evaluation <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><a class="text-link" href="https://github.com/NotMohamedHany/credit-card-fraud" target="_blank" rel="noopener noreferrer">Repository <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="sadaf" aria-labelledby="sadaf-title">
+      <div class="wrap">
+        <div class="sadaf-intro reveal"><div><p class="eyebrow"><span class="dash" aria-hidden="true"></span>A note for AlSadaf</p><h2 id="sadaf-title">AI that fits the way<br>a production team works.</h2></div><div><p>Your AI Agents & Automation role connects technical work to day-to-day operations. I’d bring experience in agents, retrieval, APIs, and n8n, and apply it to a focused workflow with a clear measure of success.</p><p class="small-note">The ideas below are proposed applications of my experience, to validate with your team.</p></div></div>
+        <div class="opportunities">
+          <article class="opportunity reveal"><div class="opportunity-top"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg><span>PROPOSED / 01</span></div><h3>Find the right<br>production knowledge.</h3><p>A retrieval assistant over approved scripts, production documents, and internal procedures, with source references and Arabic/English interaction.</p><p class="measure">MEASURE → retrieval quality, answer quality, time to find information</p><p class="evidence">EXPERIENCE → Clinical RAG + AdvancedRAG</p></article>
+          <article class="opportunity reveal"><div class="opportunity-top"><svg class="icon" aria-hidden="true"><use href="#i-flow"/></svg><span>PROPOSED / 02</span></div><h3>Connect requests<br>to the right workflow.</h3><p>Prototype a department workflow connecting email, APIs, and Odoo. Start with a narrow task and approval before sensitive changes. Odoo would be a new integration to validate.</p><p class="measure">MEASURE → completion rate, processing time, error rate</p><p class="evidence">EXPERIENCE → n8n scheduling + CustomerSupport workflows</p></article>
+          <article class="opportunity reveal"><div class="opportunity-top"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>PROPOSED / 03</span></div><h3>Make quality<br>visible and reviewable.</h3><p>Define a representative test set, track failures and usage costs, and introduce logs and review gates. Give employees a clear guide before expanding the pilot.</p><p class="measure">MEASURE → task success, cost per task, adoption</p><p class="evidence">EXPERIENCE → Hotel Agent confirmation + support role checks</p></article>
+        </div>
+        <div class="approach reveal"><p>My starting point:<br>one useful, measurable pilot.</p><ol><li><span>01 / UNDERSTAND</span>Map the task and establish a baseline.</li><li><span>02 / BUILD</span>Choose the simplest suitable agent or automation.</li><li><span>03 / EVALUATE</span>Test quality, failure cases, and operating cost.</li><li><span>04 / HAND OVER</span>Document, train, and improve from usage.</li></ol></div>
+        <div class="source-links"><span>CONTEXT: COMPANY PROFILE + PUBLISHED ROLE</span><a href="https://www.linkedin.com/company/alsadaf-company-for-production" target="_blank" rel="noopener noreferrer">Company profile ↗</a><a href="https://eg.linkedin.com/jobs/view/4469705956/" target="_blank" rel="noopener noreferrer">AI Agents & Automation role ↗</a></div>
+      </div>
+    </section>
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <div class="experience-grid">
+          <div class="experience-intro reveal"><p class="eyebrow"><span class="dash" aria-hidden="true"></span>04 / Background</p><h2 id="experience-title">From learning<br>to building.</h2><p>AI & Machine Learning Engineer with a B.Sc. in Information Systems and Technology. My focus is turning language models and data into practical systems with an evaluation path.</p><div class="education"><h3>Port Said University</h3><p>Bachelor of Information Systems and Technology<br>Oct 2022 – Jul 2026<br>GPA 3.50/4.0 · Very Good with Honors</p><p>Arabic — Native<br>English — Professional working proficiency</p><a class="text-link" href="https://drive.google.com/file/d/1e_c4y4j5Q23pYi1Bn4p6Ok7VquIOZJiB/view?usp=sharing" target="_blank" rel="noopener noreferrer">Top 3 hackathon certificate <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          <ol class="timeline reveal">
+            <li><time>Aug 2026 – Present</time><h3>PM Accelerator</h3><p class="role">Data Science & AI Engineer Intern · Remote</p><p>Built a forecasting pipeline across 40+ global weather features using Linear Regression, Random Forest, XGBoost, and ensembles. Achieved 94% R² for temperature and 68% R² for PM2.5 prediction.</p><p>Contributing to an AI product with a cross-functional team, owning model design and pipeline architecture. Product details are under NDA.</p></li>
+            <li><time>Jul 2026 – Sep 2026</time><h3>Orange Business Center</h3><p class="role">AI Agent Training · Cairo, Egypt</p><p>Built LangGraph agents with tool calling, structured outputs, intent recognition, and dynamic execution. Developed RAG workflows over documents and Excel data.</p><a class="text-link" href="https://drive.google.com/file/d/1m_azLQuwF2MameA2sUEWdQXZRem4MvOl/view?usp=sharing" target="_blank" rel="noopener noreferrer">View agent demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+            <li><time>Jan 2025 – Jul 2025</time><h3>CSkilled Academy</h3><p class="role">Machine Learning Diploma · 140 hours</p><p>Formal machine learning training that supports my work in model comparison, feature engineering, class imbalance, and evaluation.</p><a class="text-link" href="https://drive.google.com/file/d/1g9kTLiR7cAAxQllC57kXv8VuYkl2ZdDz/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          </ol>
+        </div>
+        <div class="skills reveal"><h3>Tools I work with.</h3><div><div class="skill-group"><h4>Agents & intelligence</h4><p>Python · LangGraph · LangChain<br>Tool calling · MCP integrations<br>OpenAI · Cohere · Google LLMs<br>Hugging Face · PyTorch · Ragas<br>Prompt engineering · LoRA</p></div><div class="skill-group"><h4>Backends & automation</h4><p>FastAPI · n8n · Docker · Git<br>SQLAlchemy · Alembic · CI/CD<br>PostgreSQL · pgvector · Qdrant<br>MLflow · DVC · Prometheus · Grafana</p></div><div class="skill-group"><h4>Data & machine learning</h4><p>SQL · Pandas · NumPy<br>Scikit-learn · XGBoost · TensorFlow<br>OpenCV · Transformers<br>Model evaluation · Streamlit</p></div></div></div>
+      </div>
+    </section>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div><p class="eyebrow"><span class="dash" aria-hidden="true"></span>Let’s build something useful.</p><h2 id="contact-title">Your next workflow.<br>My next challenge.</h2><p>Looking for an engineer who can connect agents, automation, and practical backend work? Let’s discuss the problem your team wants to solve.</p></div>
+        <div class="contact-details"><a class="email-link" href="mailto:mohammad.a.hammad.eng@gmail.com">mohammad.a.hammad.eng@gmail.com <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a><div class="contact-options"><a href="tel:+201025896994">+20 102 589 6994</a><button class="copy-email"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy email</span></button></div><div class="socials"><a href="https://github.com/YACIINE105" target="_blank" rel="noopener noreferrer">GitHub <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a><a href="https://www.linkedin.com/in/mohammad-a-hmmad-7181a7208" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a><a class="cv-link" href="assets/Mohammad_Elsayed_CV.pdf" download="Mohammad_Elsayed_CV.pdf">Download CV <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a></div></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-row"><div><span class="footer-name">Mohammad Ashraf Mohammad Elsayed</span><br>AI & Machine Learning Engineer · Cairo, Egypt</div><p class="footer-note">© 2026 · Project evidence from my <a class="cv-link" href="assets/Mohammad_Elsayed_CV.pdf" download="Mohammad_Elsayed_CV.pdf">CV</a> and linked repositories.<br>Evaluation figures describe project test sets. Proposed AlSadaf ideas are labeled above.</p></div></footer>
+  <dialog id="case-dialog" aria-labelledby="case-title"><div class="dialog-top"><span id="case-label">PROJECT CASE STUDY</span><button class="dialog-close" aria-label="Close case study"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div><div class="dialog-body" id="case-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      'use strict';
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const icon = '<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>';
+      const cases = {
+        hotel: {
+          label: 'HOTEL AGENT / TEXT, VOICE & TOOL ORCHESTRATION',
+          title: 'Hotel Agent',
+          summary: 'A headless hotel front desk and travel-shopping prototype with an embeddable guest widget, staff inbox, structured booking workflow, and streaming voice.',
+          challenge: 'Give guests useful, grounded assistance while keeping booking actions explicit, recoverable, and connected to a human team.',
+          work: ['Implemented a custom asynchronous TurnRunner that loads property-scoped facts, documents, and history, streams responses, and executes intent-gated tools.', 'Built knowledge retrieval with BM25, Arabic normalization, optional embedding fusion, approved localized facts, and audited source use.', 'Implemented quote → guest confirmation → submit → reconcile, with idempotency keys, price-change reconfirmation, supplier-effect records, and staff review after unrecoverable failures.', 'Added an embeddable widget, a staff inbox, AI pause/takeover, SSE updates, and PostgreSQL LISTEN/NOTIFY for cross-worker notifications.', 'Built a WebSocket voice pipeline with ASR, parallel sentence-level TTS, ordered playback, and barge-in. Text supports English, Arabic, and French; current speech output is English.', 'Added a travel shopper with supplier fan-out, price ranking, a trivago MCP adapter for compare-only offers, and a LiteAPI integration for sandbox booking.'],
+          evidence: 'Reviewed the README, architecture document, agent orchestrator, booking service, trivago adapter, voice pipeline, and repository tests. Tests cover duplicate booking attempts, repricing, timeout reconciliation, tool constraints, guest/staff access boundaries, and human handoff. Source snapshot: 6d0face, reviewed 9 October 2026.',
+          scope: 'The hotel reservation connector is currently a database-backed simulator; real hotel PMS integrations are planned. trivago offers redirect to the supplier for booking. LiteAPI live payments are not enabled; sandbox booking requires configuration. Arabic/French speech output and OIDC staff login are future extensions. The application and test suite were inspected, not executed during this portfolio update.',
+          links: [['Project repository', 'https://github.com/YACIINE105/hotel_agent'], ['Architecture & flows', 'https://github.com/YACIINE105/hotel_agent/blob/6d0face6fdc4ddf1ee648816348c61c6ccb93010/ARCHITECTURE.md'], ['Booking workflow tests', 'https://github.com/YACIINE105/hotel_agent/blob/6d0face6fdc4ddf1ee648816348c61c6ccb93010/tests/test_booking.py']]
+        },
+        support: {
+          label: 'CUSTOMERSUPPORT / ASYNC API & SUPPORT WORKFLOWS',
+          title: 'Customer Support Platform',
+          summary: 'A modular monolith that implements the operational backend for customer-support interactions, with separate route, controller, service, repository, and persistence layers.',
+          challenge: 'Keep customers, conversations, messages, agent assignments, escalations, and call records consistent as a support interaction changes state.',
+          work: ['Built an asynchronous FastAPI API with Pydantic validation, SQLAlchemy repositories, PostgreSQL, Alembic migrations, and Docker configuration.', 'Implemented customer operations, conversation filtering and history, authenticated human-agent messages, and agent availability.', 'Added JWT authentication, role-based provisioning and manager actions, immediate inactive-account checks, and assignment/ownership rules.', 'Implemented conversation lifecycle validation, manager assignment, escalation priority and resolution, and a single unresolved escalation per conversation.', 'Added provider-independent call records with validated transitions, answer/end timestamps, duration, recording URLs, and transcripts. Active calls block incompatible conversation changes.', 'Separated business rules from persistence and included service, API, and database-constraint tests for authenticated workflows.'],
+          evidence: 'Reviewed the current repository README, services, authentication dependencies, migrations, and tests. Code implements assignment guards, atomic escalation/conversation changes, role checks, lifecycle validation, and structured event logging. Source snapshot: 5254626, reviewed 9 October 2026.',
+          scope: 'Current project is a backend foundation for a single business. LLM/RAG agents, a frontend, real voice/telephony, and public-deployment hardening remain planned. Call records store metadata; they do not place phone calls. Some older README overview sections lag the later milestones, so implemented features were checked against code. The application and test suite were not executed during this portfolio update.',
+          links: [['Project repository', 'https://github.com/YACIINE105/CustomerSupport'], ['Backend architecture & milestones', 'https://github.com/YACIINE105/CustomerSupport/blob/5254626a8641d626aa257b105c18dabe9f0b0b8d/README.md'], ['Escalation workflow tests', 'https://github.com/YACIINE105/CustomerSupport/blob/5254626a8641d626aa257b105c18dabe9f0b0b8d/tests/test_escalation_api.py']]
+        },
+        clinical: {
+          label: 'HACKATHON PROJECT / AGENTIC CLINICAL ASSISTANT',
+          title: 'Clinical Guidelines AI Assistant',
+          summary: 'An agentic RAG project that combines guideline retrieval, a role-based multi-agent supervisor, and several ways to interact with the system.',
+          challenge: 'Retrieve relevant clinical source material and make the interaction usable for doctor and patient contexts, in Arabic and English.',
+          work: ['Built a LangGraph pipeline with hybrid dense/sparse retrieval, Reciprocal Rank Fusion (RRF), and cross-encoder reranking.', 'Added LLM relevance grading to support iterative retrieval improvement.', 'Designed a doctor/patient multi-agent supervisor with bilingual symptom and vital-sign checkers.', 'Served the system through FastAPI with asynchronous REST, SSE streaming, and session management.', 'Extended the project with a Telegram bot, voice via STT/TTS on Colab through Cloudflare Tunnel, and n8n appointment scheduling.'],
+          evidence: 'On a 40-question clinical evaluation set: 92.5% precision@1, 100% source-document retrieval accuracy, and 86.4% concept coverage. The CV reports 97.5% of retrievals passing LLM relevance grading in ≤1 iteration on average.',
+          scope: 'Hackathon project results; they describe this evaluation set rather than a broad clinical validation. Voice access used Colab and Cloudflare Tunnel as a prototype setup.',
+          links: [['Project repository', 'https://github.com/NotMohamedHany/clinical-rag'], ['Hackathon certificate', 'https://drive.google.com/file/d/1e_c4y4j5Q23pYi1Bn4p6Ok7VquIOZJiB/view?usp=sharing']]
+        },
+        orange: {
+          label: 'ORANGE BUSINESS CENTER / JUL–SEP 2026',
+          title: 'LLM Agents & Knowledge Tools',
+          summary: 'Hands-on AI agent work developed during training at Orange Business Center in Cairo.',
+          challenge: 'Move from an LLM response to an agent that recognizes intent, retrieves context, and uses tools to execute tasks.',
+          work: ['Built Python agents with LangGraph and tool calling.', 'Used structured outputs and output parsing to make responses usable by application logic.', 'Implemented intent recognition and dynamic task execution.', 'Developed RAG pipelines using documents and Excel data as external knowledge sources.', 'Applied Transformer/LLM concepts, prompt engineering, knowledge integration, and fine-tuning in practical implementations.'],
+          evidence: 'The CV includes a demonstration link for this work. Training ran from July to September 2026.',
+          scope: 'Training projects. The CV does not specify independent deployment or quantitative agent-success metrics for this work.',
+          links: [['Watch the demonstration', 'https://drive.google.com/file/d/1m_azLQuwF2MameA2sUEWdQXZRem4MvOl/view?usp=sharing']]
+        },
+        automation: {
+          label: 'CLINICAL RAG / AUTOMATION & CHANNEL INTEGRATIONS',
+          title: 'From conversation to scheduling',
+          summary: 'Automation and integration work within the Clinical Guidelines RAG project connects the assistant to a practical appointment workflow and additional interaction channels.',
+          challenge: 'Give the agent a useful action path beyond answering a question, and make it accessible beyond a web interface.',
+          work: ['Integrated automated appointment scheduling using n8n.', 'Added a Telegram bot for text and voice interaction.', 'Used STT/TTS on Colab, exposed through Cloudflare Tunnel, for the voice prototype.', 'Used a FastAPI backend with asynchronous REST, SSE streaming, and session management to support application access.'],
+          evidence: 'The CV documents the n8n scheduling integration and the voice/Telegram extensions as implemented features in the hackathon project.',
+          scope: 'The diagram on the page is a high-level architecture summary, not an exported n8n workflow. The CV does not identify the scheduling provider, detailed nodes, or measured time savings.',
+          links: [['Clinical project repository', 'https://github.com/NotMohamedHany/clinical-rag']]
+        },
+        advancedrag: {
+          label: 'GRADUATION PROJECT / MODULAR RAG FRAMEWORK',
+          title: 'AdvancedRAG',
+          summary: 'A modular RAG platform with a reusable backend, interchangeable providers, and reproducible infrastructure.',
+          challenge: 'Keep retrieval and generation configurable instead of coupling the application to one model provider or vector store.',
+          work: ['Built a FastAPI framework with a provider factory supporting OpenAI, Cohere, and Google LLMs.', 'Supported switching between Qdrant and pgvector for vector storage.', 'Implemented token-aware chunking, semantic boundary detection, and hybrid search combining vector, keyword, and metadata signals.', 'Added semantic caching for repeated queries.', 'Designed a PostgreSQL schema with SQLAlchemy/Alembic and a Dockerized deployment.'],
+          evidence: 'Graduation project with the repository linked in the CV. The architecture demonstrates provider abstraction, retrieval engineering, and database/deployment work.',
+          scope: 'The CV does not provide load-test figures, latency benchmarks, or production traffic volumes for this platform.',
+          links: [['Explore the repository', 'https://github.com/YACIINE105/rag-ishms']]
+        },
+        fraud: {
+          label: 'MACHINE LEARNING / MAY 2025',
+          title: 'Credit Card Fraud Detection',
+          summary: 'A model comparison and threshold-tuning project for highly imbalanced transaction data.',
+          challenge: 'Detect the minority class in a dataset with 305 minority instances and 170,579 majority instances, while managing the precision/recall trade-off.',
+          work: ['Compared random undersampling, random oversampling, combined resampling, and SMOTE.', 'Benchmarked Logistic Regression, KNN, PCA + KNN, Neural Networks, and Random Forest.', 'Selected the strongest model using F1, precision, and recall.', 'Analyzed decision thresholds; a threshold of 0.56 reached 92.6% precision while keeping recall at or above 80%.'],
+          evidence: 'The best Random Forest model achieved F1 = 0.88, recall = 0.84, and precision = 0.92. The threshold analysis is a separate operating-point result.',
+          scope: 'Figures describe the project evaluation dataset. They are not a claim about performance on a deployed financial service.',
+          links: [['Explore the repository', 'https://github.com/NotMohamedHany/credit-card-fraud']]
+        }
+      };
+      const architectures = {
+        agents: {a:['Knowledge','Clinical guidelines','doc'],b:['User context','Arabic / English','chat'],c:['Hybrid retrieval','RRF + reranking','db'],d:['Grounded answer','Relevance grading','check'],core:['LangGraph','Multi-agent supervisor'],description:'A supervisor coordinates context, retrieval, and relevance checks to produce an evidence-grounded response.'},
+        automation: {a:['User interaction','Text / voice','chat'],b:['Application API','FastAPI backend','code'],c:['n8n workflow','Scheduling integration','flow'],d:['Appointment task','Automated scheduling','calendar'],core:['Agent → action','Clinical project integration'],description:'The clinical assistant connects a conversation to n8n appointment scheduling, with voice and Telegram access.'},
+        platform: {a:['Knowledge sources','Documents & metadata','doc'],b:['Model providers','OpenAI / Cohere / Google','code'],c:['Vector storage','Qdrant / pgvector','db'],d:['Application API','FastAPI + Docker','flow'],core:['AdvancedRAG','Modular retrieval framework'],description:'A provider factory and modular retrieval pipeline connect knowledge, vector storage, and LLMs behind a FastAPI application.'}
+      };
+      const tabs = $$('[data-system]');
+      const activateTab = tab => {
+        tabs.forEach(t => { t.setAttribute('aria-selected', String(t === tab)); t.tabIndex = t === tab ? 0 : -1; });
+        const view = architectures[tab.dataset.system];
+        ['a','b','c','d'].forEach(key => {
+          $('#node-'+key+'-title').textContent = view[key][0];
+          $('#node-'+key+'-sub').textContent = view[key][1];
+          $('#node-'+key+'-icon').setAttribute('href', '#i-'+view[key][2]);
+        });
+        $('#core-title').textContent = view.core[0];
+        $('#core-sub').textContent = view.core[1];
+        $('#system-description').textContent = view.description;
+        $('#architecture-panel').setAttribute('aria-labelledby',tab.id);
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', e => {
+          let next;
+          if(e.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          if(e.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+          if(e.key === 'Home') next = 0;
+          if(e.key === 'End') next = tabs.length - 1;
+          if(next !== undefined){e.preventDefault();tabs[next].focus();activateTab(tabs[next]);}
+        });
+      });
+      const menu = $('.menu-toggle');
+      const navLinks = $('#nav-links');
+      const closeMenu = () => {navLinks.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open navigation');};
+      menu.addEventListener('click', () => {
+        const open = menu.getAttribute('aria-expanded') !== 'true';
+        navLinks.classList.toggle('open',open);
+        menu.setAttribute('aria-expanded',String(open));
+        menu.setAttribute('aria-label',open ? 'Close navigation' : 'Open navigation');
+      });
+      $$('#nav-links a').forEach(link => link.addEventListener('click',closeMenu));
+      document.addEventListener('keydown',e => {if(e.key === 'Escape')closeMenu();});
+      document.addEventListener('click',e => {if(!e.target.closest('.nav'))closeMenu();});
+      const dialog = $('#case-dialog');
+      let opener = null;
+      const escapeHtml = text => text.replace(/[&<>"']/g,c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      $$('[data-case]').forEach(button => button.addEventListener('click', () => {
+        const item = cases[button.dataset.case];
+        if(!item) return;
+        opener = button;
+        $('#case-label').textContent = item.label;
+        $('#case-content').innerHTML = '<h2 id="case-title">'+escapeHtml(item.title)+'</h2><p class="dialog-summary">'+escapeHtml(item.summary)+'</p><h3>The problem</h3><p>'+escapeHtml(item.challenge)+'</p><h3>My contribution</h3><ul>'+item.work.map(w=>'<li>'+escapeHtml(w)+'</li>').join('')+'</ul><div class="dialog-evidence"><h3>Evidence & evaluation</h3><p>'+escapeHtml(item.evidence)+'</p></div><h3>Project scope</h3><p>'+escapeHtml(item.scope)+'</p><div class="dialog-links">'+item.links.map(([label,url])=>'<a class="text-link" href="'+url+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(label)+' '+icon+'</a>').join('')+'</div>';
+        if(typeof dialog.showModal === 'function'){dialog.showModal();document.body.style.overflow='hidden';dialog.scrollTop=0;$('.dialog-close').focus();}
+        else{window.open(item.links[0][1],'_blank','noopener');}
+      }));
+      $('.dialog-close').addEventListener('click',()=>dialog.close());
+      dialog.addEventListener('click',e => {
+        const bounds = dialog.getBoundingClientRect();
+        if(e.target === dialog && (e.clientX < bounds.left || e.clientX > bounds.right || e.clientY < bounds.top || e.clientY > bounds.bottom))dialog.close();
+      });
+      dialog.addEventListener('close',() => {document.body.style.overflow='';if(opener)opener.focus();});
+      let toastTimer;
+      const showToast = message => {const toast=$('#toast');clearTimeout(toastTimer);toast.textContent=message;toast.classList.add('visible');toastTimer=setTimeout(()=>toast.classList.remove('visible'),3600);};
+      $('.copy-email').addEventListener('click', async () => {
+        const email = 'mohammad.a.hammad.eng@gmail.com';
+        let copied = false;
+        if(navigator.clipboard && window.isSecureContext){try{await navigator.clipboard.writeText(email);copied=true;}catch(_){/* Use local fallback below. */}}
+        if(!copied){const area=document.createElement('textarea');area.value=email;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();try{copied=document.execCommand('copy');}catch(_){copied=false;}area.remove();$('.copy-email').focus();}
+        showToast(copied ? 'Email copied. Let’s talk.' : 'Email: '+email);
+      });
+      if('IntersectionObserver' in window){
+        if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+          document.documentElement.classList.add('motion-ready');
+          const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target);}}),{threshold:.07});
+          $$('.reveal').forEach(el=>revealObserver.observe(el));
+        }
+        const activeObserver = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting){$$('#nav-links a').forEach(link => {if(link.getAttribute('href') === '#'+entry.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}}),{rootMargin:'-15% 0px -70% 0px',threshold:0});
+        $$('section[id]').forEach(el => activeObserver.observe(el));
+      }
+    })();
+  </script>
+</body>
+</html>

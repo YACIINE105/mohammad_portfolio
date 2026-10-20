@@ -2,10 +2,16 @@
   "name": "mohammad-elsayed-portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "AI engineer portfolio: agents, automation, retrieval systems, and evaluated ML.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "check:github": "node scripts/check-github.mjs",
+    "dev": "node scripts/preview.mjs",
+    "check:note": "node scripts/check-note-pull.mjs",
+    "check:buddy": "node scripts/check-buddy.mjs",
+    "check:name": "node scripts/check-name-intro.mjs"
   },
   "engines": {
     "node": ">=22"

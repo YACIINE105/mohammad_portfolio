@@ -1,4 +1,9 @@
 dist/
 node_modules/
 .vercel/
+.openai/
 .DS_Store
+
+tmp/
+output/
+TASK-NOTE.md

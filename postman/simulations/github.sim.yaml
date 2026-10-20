@@ -1,0 +1,5 @@
+simulation: portfolio-github
+routing: path
+mocks:
+  - routeKey: github
+    path: ../mocks/github/config.yaml

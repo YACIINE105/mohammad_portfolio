@@ -1,72 +1,68 @@
-# Mohammad Elsayed — AI Engineer Portfolio
+# Mohammad Elsayed — Personal Portfolio
 
-A responsive, dependency-free portfolio built from the supplied CV, inspected project repositories, and the published AlSadaf AI Agents & Automation role. It includes separate AI agent and automation sections, interactive architecture views, seven project/implementation case studies, original CV links, and a downloadable copy of the original CV.
+A handwritten portfolio inspired by [samouly.fun](https://samouly.fun), personalized using the supplied CV and original portfolio. Dependency-free HTML, CSS, and JavaScript.
 
-Featured additions: Hotel Agent (multilingual text, English streaming voice, guarded tools, guest-confirmed booking, staff handoff, and MCP travel search) and CustomerSupport (authenticated async backend, conversation assignment, escalations, and call records). Their custom booking and escalation workflows also appear in the automation section.
+## Features
 
-## Deploy on Vercel
+- Dark/light themes, handwritten social links, pullable hanging note, animated arrow, and cursor-following eyes.
+- One-time pink/red name arrival effect that settles to the normal heading.
+- Work preview on hover/focus; five expandable projects, experience, toolkit, and keyboard navigation.
+- Project notes link to real project details. No fictional blog posts or dates.
+- Note composer opens an email draft for the visitor to send. Includes email copying, Twitter, GitHub, LinkedIn, and the supplied CV.
+- Pen, highlighter, eraser, ink color, clear, and exit controls. Escape exits drawing. Drawings are not uploaded.
+- Live contributions and six latest public commits authored by `YACIINE105` across public repositories.
+- RTL commit layout, newest first, with readable English messages, repository names, and hashes.
+- Automatic refresh every five minutes while visible, refresh on return, and manual Refresh. Requests are separated by at least one minute.
+- Cached commits, explicit offline status, timeouts, validation, and rate-limit backoff. No API key is embedded.
+- Responsive layouts, reduced-motion support, focus states, and API fallbacks.
 
-1. Unzip this project. Upload the contents of `mohammad-portfolio/` to a GitHub repository; `package.json` must be at the repository root.
-2. In Vercel, choose **Add New → Project** and import that repository.
-3. Use **Other** as the framework preset. `vercel.json` supplies **Build Command: `npm run build`** and **Output Directory: `dist`**. Use Node.js **24.x** (or a supported version 22+). No environment variables or dependencies are needed.
-4. Choose **Deploy**. Share the resulting URL with the recruiter.
+## Run and build
 
-Alternatively, from the project folder, use Vercel CLI:
+Node.js 22 or newer; no dependency installation required.
 
-```bash
-npx vercel --prod
-```
-
-The CLI will ask you to sign in and select a Vercel account/project. No deployment or account action has been performed by the portfolio builder.
-
-## Local use
-
-Open `index.html` directly, or use a static server:
-
-```bash
-python3 -m http.server 3000
-```
-
-Then open `http://localhost:3000`. Local fonts and the CV are included. There are no external scripts, trackers, API keys, or paid services.
-
-To build or run the structural check:
-
-```bash
+```sh
+npm run dev
 npm run check
 npm run build
 ```
 
-## Edit the content
+Preview: `http://127.0.0.1:4174`. Build output: `dist/`. Serve over HTTP; browser modules and APIs are not reliable from `file://`.
 
-- **Page copy, layout, colors, and mobile styles:** `index.html`. CSS is in the `<style>` block.
-- **Project case studies and architecture tabs:** `cases` and `architectures` in the bottom `<script>` block.
-- **CV:** replace `assets/Mohammad_Elsayed_CV.pdf`, retaining its name.
-- **Social sharing image:** `assets/social-preview.png`.
-- **Contact links:** search `index.html` for the email, phone number, and GitHub/LinkedIn URLs.
-- **AlSadaf-specific section:** search for `<section class="section" id="sadaf"`. Remove or adapt it for another employer. The rest of the portfolio is reusable.
-- **After deployment:** add your absolute production URL to `og:url`, a canonical link, and the absolute `og:image` URL if needed for your social platform’s crawler. The current root-relative image path works on standard Vercel hosting, but some social crawlers require an absolute URL.
+## Interaction checks
 
-Contact details intentionally come from the CV, including the phone number. Remove the phone link before a public deployment if you prefer email-only contact.
+```sh
+npm run check:note
+npm run check:buddy
+npm run check:name
+```
 
-## Content sources and scope
+Pull the hanging label downward and release to open the email composer. A short or cancelled pull returns to its resting position. Clicking or pressing Enter also works. Only the blue character's eyes follow the pointer; its body stays fixed. Clicking the character leaves all animations running. The name animates briefly on page load and then returns to its normal appearance. Reduced-motion mode skips the name effect and eye tracking and disables decorative animation.
 
-- `assets/Mohammad_Elsayed_CV.pdf` is an unmodified copy of the supplied CV. Project metrics, dates, qualifications, and repository/demo/certificate links are sourced from it.
-- AlSadaf company profile: https://www.linkedin.com/company/alsadaf-company-for-production
-- Published role: https://eg.linkedin.com/jobs/view/4469705956/
-- Research date: 9 October 2026. The job posting names Sadaf for Audio & Visual Production Co. Ltd. in its description and asks for agents, APIs, Odoo/email integrations, KPIs, testing, monitoring, and documentation.
-- The company’s LinkedIn profile describes a drama production company within MBC Group. That context informed the proposed production-document use case.
-- Clinical metrics are labeled with their 40-question evaluation context. The n8n workflow illustration is an overview, not a claim about exact node definitions or a production booking provider.
-- Proposed AlSadaf use cases are clearly marked. Odoo is a proposed integration, not existing Odoo experience.
-- PM Accelerator NDA details are not disclosed.
-- CV repository, demo, and certificate links were preserved. Those older repository contents and link permissions were not independently verified in the initial build.
-- **Hotel Agent:** https://github.com/YACIINE105/hotel_agent — code and documentation inspected at commit `6d0face6fdc4ddf1ee648816348c61c6ccb93010` on 9 October 2026. Reviewed the README, architecture, agent orchestrator, booking service, MCP supplier adapter, voice pipeline, knowledge service, and tests. The page distinguishes a simulated hotel connector from configured external travel-search integrations; current TTS is English-only.
-- **CustomerSupport:** https://github.com/YACIINE105/CustomerSupport — code and documentation inspected at commit `5254626a8641d626aa257b105c18dabe9f0b0b8d` on 9 October 2026. Reviewed services, authentication, migrations, and tests. Later README milestones were checked against code because the older overview is stale. This is featured as an implemented backend foundation; LLM/RAG, frontend, and telephony extensions remain planned.
-- Both added repositories were accessed directly through Git. Their application servers, suppliers, paid services, and test suites were not run for this portfolio edit. No repository code was modified. No latency, throughput, production-customer, or ROI claims were added from unverified measurements.
+## Existing Vercel portfolio
 
-## Verification
+Use this source in the existing `YACIINE105/mohammad_portfolio` repository. The retained Vercel configuration builds with `npm run build` and publishes `dist/`. No environment variables are required. Canonical metadata retains https://mohammadportfolio-one.vercel.app/.
 
-The project includes a successful static build and structural validation: JavaScript syntax, JSON metadata, anchors, local assets, original CV integrity, and responsive/accessibility declarations. The page provides keyboard-operable tabs, native modal dialogs, focus styles, reduced-motion support, and mobile navigation. Browser rendering and real interaction QA were unavailable in the creation environment; review desktop and mobile on Vercel’s preview before sharing.
+## Edit
 
-## Fonts
+- `index.html`: content, projects, experience, contact, and metadata.
+- `assets/playground.css`: design, animations, and responsive styles.
+- `assets/playground.js`: navigation, motion, composer, and drawing.
+- `assets/name-intro.js`: one-time name effect and motion preferences.
+- `assets/github-activity.js`: account, API calls, RTL rendering, caching, and refresh.
+- `assets/Mohammad_Elsayed_CV.pdf`: supplied CV.
+- `assets/fonts/`: Patrick Hand font and license.
 
-Rubik (regular/bold) and Source Code Pro are bundled for offline use under the SIL Open Font License 1.1. See `assets/fonts/OFL.txt`.
+GitHub exposes public, indexed commits; new commits may take time to be indexed. Contributions use `github-contributions-api.jogruber.de`, with repository links as fallback. No analytics scripts.
+
+## API checks
+
+```sh
+postman simulation run postman/simulations/github.sim.yaml --port 4900 --output ndjson --no-history
+npm run check:github
+```
+
+The synthetic mock follows GitHub's documented response and the live response inspected during implementation. It is excluded from the public build and has not been published to Postman. An owning-team mock was not used for this public-provider integration.
+
+Checks cover ordering, deduplication, empty history, invalid/incomplete data, rate-limit backoff, HTML upstream errors, and timeout cancellation. Live browser checks separately confirmed real activity and cached offline behavior.
+
+Claims come from the CV and preserved portfolio. Clinical metrics remain tied to the 40-question evaluation; fraud metrics retain their evaluation context. NDA details are omitted. See `VERIFICATION.md` for browser checks.

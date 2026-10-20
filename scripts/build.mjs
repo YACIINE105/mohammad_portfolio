@@ -4,6 +4,7 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'dist');
+if (path.relative(root, output) !== 'dist') throw new Error('Build output must stay in this project.');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(path.join(root, 'index.html'), path.join(output, 'index.html'));

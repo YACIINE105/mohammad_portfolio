@@ -8,6 +8,7 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "check:github": "node scripts/check-github.mjs",
+    "check:events": "node scripts/check-github-events.mjs",
     "dev": "node scripts/preview.mjs",
     "check:note": "node scripts/check-note-pull.mjs",
     "check:buddy": "node scripts/check-buddy.mjs",

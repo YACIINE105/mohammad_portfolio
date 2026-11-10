@@ -9,11 +9,10 @@ A handwritten portfolio inspired by [samouly.fun](https://samouly.fun), personal
 - Work preview on hover/focus; five expandable projects, experience, toolkit, and keyboard navigation.
 - Project notes link to real project details. No fictional blog posts or dates.
 - Note composer opens an email draft for the visitor to send. Includes email copying, Twitter, GitHub, LinkedIn, and the supplied CV.
-- Pen, highlighter, eraser, ink color, clear, and exit controls. Escape exits drawing. Drawings are not uploaded.
-- Live contributions and six latest public commits authored by `YACIINE105` across public repositories.
-- RTL commit layout, newest first, with readable English messages, repository names, and hashes.
-- Automatic refresh every five minutes while visible, refresh on return, and manual Refresh. Requests are separated by at least one minute.
-- Cached commits, explicit offline status, timeouts, validation, and rate-limit backoff. No API key is embedded.
+- Live contributions (last 8 months), six latest public commits, and recent public pull requests authored by `YACIINE105` across public repositories.
+- RTL commit layout and structured pull request feed (states, repository names, PR titles, and links), newest first, with readable English messages, repository names, and hashes.
+- Automatic refresh every five minutes while visible, refresh on return, and manual Refresh for commits and pull requests; contributions refresh periodically while the page remains open. Requests are separated by at least one minute.
+- Cached commits and pull requests, explicit offline status, timeouts, validation, and rate-limit backoff. No API key or secret is embedded.
 - Responsive layouts, reduced-motion support, focus states, and API fallbacks.
 
 ## Run and build
@@ -46,13 +45,13 @@ Use this source in the existing `YACIINE105/mohammad_portfolio` repository. The 
 
 - `index.html`: content, projects, experience, contact, and metadata.
 - `assets/playground.css`: design, animations, and responsive styles.
-- `assets/playground.js`: navigation, motion, composer, and drawing.
+- `assets/playground.js`: navigation, motion, and composer.
 - `assets/name-intro.js`: one-time name effect and motion preferences.
-- `assets/github-activity.js`: account, API calls, RTL rendering, caching, and refresh.
+- `assets/github-activity.js`: account, API calls (commits and pull requests), live 8-month contributions, caching, and refresh.
 - `assets/Mohammad_Elsayed_CV.pdf`: supplied CV.
 - `assets/fonts/`: Patrick Hand font and license.
 
-GitHub exposes public, indexed commits; new commits may take time to be indexed. Contributions use `github-contributions-api.jogruber.de`, with repository links as fallback. No analytics scripts.
+GitHub exposes public, indexed commits and authored pull requests; new activity may take time to be indexed. Contributions use `github-contributions-api.jogruber.de` (showing the last 8 months), updating periodically while open, with repository links as fallback. No analytics scripts.
 
 ## API checks
 

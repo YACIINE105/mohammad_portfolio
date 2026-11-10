@@ -5,7 +5,7 @@ import vm from 'node:vm';
 // Run production cursor handlers in an isolated event harness, without a browser.
 const source = await readFile(new URL('../assets/playground.js', import.meta.url), 'utf8');
 const start = source.indexOf(' let paused=reducedMotion.matches;');
-const end = source.indexOf('\n const canvas=', start);
+const end = source.indexOf('\n const canvas=', start) !== -1 ? source.indexOf('\n const canvas=', start) : source.indexOf('\n})();', start);
 assert.ok(start >= 0 && end > start);
 const listeners = new Map();
 const mascotListeners = new Map();
